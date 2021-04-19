@@ -1,6 +1,12 @@
 <?php
 
-namespace App\User;
+namespace App;
 class Comments
 {
+    /**
+     * Comments constructor.
+     */
+    public function __construct()
+    {
+    }
 }
