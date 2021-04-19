@@ -1,0 +1,11 @@
+{
+    "name": "njeremic/citrussys",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nemanja Jeremic",
+            "email": "nemanja.jeremic94@outlook.com"
+        }
+    ],
+    "require": {}
+}
