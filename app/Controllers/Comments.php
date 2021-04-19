@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
-class Comments
+namespace app\Controllers;
+
+class Comments extends Controller
 {
     /**
      * Comments constructor.

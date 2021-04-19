@@ -1,7 +1,7 @@
 <?php
 
-namespace App;
-class Products
+namespace app\Controllers;
+class Products extends Controller
 {
     /**
      * Products constructor.
