@@ -12,4 +12,8 @@ class Router
         }
 
     }
+
+    public static function post($route, $function): void
+    {
+    }
 }
