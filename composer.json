@@ -1,6 +1,7 @@
 {
     "name": "njeremic/citrussys",
     "license": "MIT",
+    "description": "Code test for the Citrus Systems",
     "authors": [
         {
             "name": "Nemanja Jeremic",
