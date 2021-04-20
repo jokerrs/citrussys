@@ -2,7 +2,7 @@
 
 namespace app\Controllers;
 
-class Comments extends Controller
+class CommentsController extends Controller
 {
     /**
      * Comments constructor.
