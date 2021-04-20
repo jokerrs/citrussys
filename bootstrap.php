@@ -4,4 +4,4 @@ foreach (file("../.env") as $item) {
     $_ENV[$config[0]] = trim($config[1]);
 }
 require_once "vendor/autoload.php";
-require_once 'routes.php';
+require_once "routes.php";
