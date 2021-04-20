@@ -8,8 +8,8 @@ class Model extends DB implements ModelInterface
 {
     public function all(): array
     {
-        $PDO = DB::getInstance()->query("SELECT * FROM ". $this->modelName());
-        if(!$PDO){
+        $PDO = DB::getInstance()->query("SELECT * FROM " . $this->modelName());
+        if (!$PDO) {
             return ['error' => 'There is no data'];
         }
         return $PDO->fetchAll();
@@ -17,13 +17,17 @@ class Model extends DB implements ModelInterface
 
     public function where(string $column, $value, ?int $limit = null): array
     {
-        $SQL = "SELECT * FROM ". $this->modelName() ." WHERE $column=:$column ";
-        if($limit !== null){
+        $SQL = "SELECT * FROM " . $this->modelName() . " WHERE $column=:$column ";
+        if ($limit !== null) {
             $SQL .= " LIMIT " . $limit;
         }
         $PDO = DB::getInstance()->prepare($SQL);
         $PDO->bindValue(":$column", $value);
-        if(!$PDO->execute() || empty($data = $PDO->fetchAll())){
+        if (!$PDO->execute()) {
+            return ['error' => 'There is no data'];
+        }
+        $data = $limit === 1 ? $PDO->fetch() : $PDO->fetchAll();
+        if (empty($data)) {
             return ['error' => 'There is no data'];
         }
         return $data;

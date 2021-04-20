@@ -17,8 +17,8 @@ new Router(__DIR__);
 Router::get('/', [ProductsController::class, 'showHomePage']);
 
 
-Router::get('/products/([a-zA-Z0-9-]*)',function ($comments){
-    print_r($comments);
+Router::get('/products/([a-zA-Z0-9-]*)',function ($slug){
+    ProductsController::showProduct($slug);
 });
 
 Router::run();
