@@ -2,10 +2,6 @@
 
 namespace app\Models;
 
-class Comments extends Model implements ModelInterface
+class Comments extends Model
 {
-    public function all()
-    {
-        // TODO: Implement all() method.
-    }
 }

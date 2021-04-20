@@ -2,10 +2,6 @@
 
 namespace app\Models;
 
-class Users extends Model implements ModelInterface
+class Users extends Model
 {
-    public function all()
-    {
-        // TODO: Implement all() method.
-    }
 }

@@ -1,10 +1,6 @@
 <?php
 
 namespace app\Models;
-class Products extends Model implements ModelInterface
+class Products extends Model
 {
-    public function all()
-    {
-        // TODO: Implement all() method.
-    }
 }
