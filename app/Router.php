@@ -4,7 +4,7 @@ namespace app;
 class Router
 {
     public static string $rootDir;
-    protected static array $routes;
+    public static array $routes;
 
     /**
      * Router constructor.
@@ -44,9 +44,14 @@ class Router
     {
         // taking the first part of the requested uri
         $uri = explode('?', $_SERVER['REQUEST_URI']);
+        $route = route_array_preg($uri[0], self::$routes);
         //checking if the route exist, before we call it, if doesn't exist, we will call 404
-        if (!array_key_exists($uri[0], self::$routes)) {
+        if (!$route) {
             self::view('404') & die();
+        }
+        if (isset($route[2])) {
+            $function = self::$routes[$route[2]];
+            return $function($route[1][0]);
         }
         $function = self::$routes[$uri[0]];
         if (is_string($function)) {
