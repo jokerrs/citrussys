@@ -7,27 +7,30 @@ use PDOException;
 
 class DB
 {
-    protected static PDO $instance;
-
     /**
-     * @return PDO|string
+     * @return PDO
      */
-    public static function getInstance()
+    public static function conn(): PDO
     {
-        if (empty(self::$instance)) {
             try {
-                self::$instance = new PDO(
+                $sth = new PDO(
                     "mysql:host=" . $_ENV['DBHOST'] . // DATABASE HOST
                     ";dbname=" . $_ENV['DBNAME'], //DATABASE NAME
                     $_ENV['DBUSERNAME'], // DATABASE USERNAME
                     $_ENV['DBPASSWORD'] // DATABASE PASSWORD
                 );
-                self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+                $sth->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+                $sth->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
-            return self::$instance;
-        }
-        return "Something went wrong";
+            return $sth;
+    }
+
+    public static function query($query, $params = [])
+    {
+        $smt = self::conn()->prepare($query);
+        $smt->execute($params);
+        return $smt;
     }
 }
