@@ -2,6 +2,8 @@
 
 namespace app\Models;
 
-class Model
+use app\DB;
+
+class Model extends DB
 {
 }
