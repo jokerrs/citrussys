@@ -14,7 +14,7 @@ class Router
         self::$rootDir = $rootDir;
     }
 
-    public static function get($route, $function)
+    public static function get($route, $function): void
     {
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
             return;
@@ -22,7 +22,7 @@ class Router
         self::request($route, $function);
     }
 
-    public static function post($route, $function)
+    public static function post($route, $function): void
     {
         if ($_SERVER['REQUEST_METHOD'] === "GET") {
             return;
@@ -30,12 +30,12 @@ class Router
         self::request($route, $function);
     }
 
-    public static function request($route, $function)
+    public static function request($route, $function): void
     {
         self::$routes[$route] = $function;
     }
 
-    public static function view($view)
+    public static function view($view): void
     {
         require_once self::$rootDir . "/views/$view.php";
     }
@@ -47,7 +47,7 @@ class Router
         $route = route_array_preg($uri[0], self::$routes);
         //checking if the route exist, before we call it, if doesn't exist, we will call 404
         if (!$route) {
-            self::view('404') & die();
+            return self::view('404');
         }
         if (isset($route[2])) {
             $function = self::$routes[$route[2]];
@@ -55,13 +55,13 @@ class Router
         }
         $function = self::$routes[$uri[0]];
         if (is_string($function)) {
-            return self::view($function);
+           return self::view($function);
         }
         return $function();
     }
 
     public static function run(): void
     {
-        self::resolve();
+         self::resolve();
     }
 }
