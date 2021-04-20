@@ -1,6 +1,8 @@
 <?php
 
 use app\Controllers\Controller;
+use app\Controllers\ProductsController;
+use app\Controllers\UsersController;
 use app\Router;
 new Router(__DIR__);
 
@@ -12,13 +14,10 @@ new Router(__DIR__);
 //    print_r(Router::$routes);
 //});
 
-Router::get('/', 'homepage');
+Router::get('/', [ProductsController::class, 'showHomePage']);
 
-Router::get('/product/([a-zA-Z]*)',function ($product){
-    print_r($product);
-});
 
-Router::get('/admin/comments/([a-zA-Z]*)',function ($comments){
+Router::get('/products/([a-zA-Z0-9-]*)',function ($comments){
     print_r($comments);
 });
 
