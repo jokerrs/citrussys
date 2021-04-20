@@ -15,13 +15,29 @@ class Model extends DB implements ModelInterface
         return $PDO->fetchAll();
     }
 
-    public function where(string $column, $value, ?int $limit = null): array
+    public function where(array $params, ?int $limit = null, ?array $orderBy = null): array
     {
-        $SQL = "SELECT * FROM " . $this->modelName() . " WHERE $column=:$column ";
+        $query = '';
+        $counter = 0;
+        foreach ($params as $param => $key){
+            $execute[":$param"] = $key;
+            if($counter > 0){
+                $query .= ' AND ';
+            }
+            $query .= $param.'=:'.$param.' ';
+            $counter++;
+        }
+        if(!isset($query, $execute)){
+            return ['error' => 'There is no data'];
+        }
+        $SQL = "SELECT * FROM " . $this->modelName() . " WHERE ".$query;
+        if ($orderBy !== null) {
+            $SQL .= " ORDER BY " . $orderBy[0]. " " . $orderBy[1];
+        }
         if ($limit !== null) {
             $SQL .= " LIMIT " . $limit;
         }
-        $PDO = DB::query($SQL, [":$column" => $value]);
+        $PDO = DB::query($SQL, $execute);
         if (!$PDO) {
             return ['error' => 'There is no data'];
         }
