@@ -55,7 +55,7 @@
             </div>
             <div class="mb-3">
                 <label for="comment" class="form-label">Comment</label>
-                <textarea class="form-control" name="creator" id="comment" rows="3" placeholder="Comment..."></textarea>
+                <textarea class="form-control" name="comment" id="comment" rows="3" placeholder="Comment..."></textarea>
             </div>
             <i class="disclaimer">*Comments will be posted after they are verified</i><br/>
             <button type="submit" class="btn btn-primary mb-3">Post comment</button>

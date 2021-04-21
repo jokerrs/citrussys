@@ -18,6 +18,9 @@ class ProductsController extends Controller
         $products = new Products();
         $comments = new Comments();
         $product = $products->where(['slug' => $slug], 1);
+        if(isset($product['error'])){
+            return self::view('404');
+        }
         $comments = $comments->getProductComments($product['id']);
         return self::view('product',$product , $comments);
     }

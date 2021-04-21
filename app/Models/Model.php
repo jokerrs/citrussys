@@ -48,6 +48,10 @@ class Model extends DB implements ModelInterface
         return $data;
     }
 
+    public function create(array $values){
+
+    }
+
     public function modelName(): string
     {
         return strtolower(substr(get_class($this), 11));
