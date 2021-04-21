@@ -11,6 +11,7 @@ class UsersController extends Controller
         $result = Users::userLogin($_POST['username'], $_POST['password']);
         if ($result['result'] === 'success') {
             $_SESSION['uid'] = $result['user_id'];
+            header("Location: /admin");
         } else {
             self::view('admin/login', $result);
         }
