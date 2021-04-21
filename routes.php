@@ -1,5 +1,6 @@
 <?php
 
+use app\Controllers\CommentsController;
 use app\Controllers\Controller;
 use app\Controllers\ProductsController;
 use app\Controllers\UsersController;
@@ -15,7 +16,7 @@ new Router(__DIR__);
 //});
 
 Router::get('/', [ProductsController::class, 'showHomePage']);
-
+Router::post('/comments', [CommentsController::class, 'create']);
 
 Router::get('/products/([a-zA-Z0-9-]*)',function ($slug){
     ProductsController::showProduct($slug);
