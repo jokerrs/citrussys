@@ -5,7 +5,8 @@
 - PHP 7.4 >
 - PDO
 - MySql
-- Apache (rewrite)
+- Apache
+  - rewrite
 - Composer globally installed for the bash installation
 
 ## Installation
