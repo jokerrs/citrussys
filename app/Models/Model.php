@@ -48,8 +48,31 @@ class Model extends DB implements ModelInterface
         return $data;
     }
 
-    public function create(array $values){
-
+    public function create(array $values): bool
+    {
+        $columns = '';
+        $columnsValues = '';
+        $execute = [];
+        $counter = 0;
+        foreach ($values as $param => $key){
+            $execute[":$param"] = $key;
+            if($counter > 0){
+                $columns .= ', ';
+                $columnsValues .= ', ';
+            }
+            $columnsValues .= ' :'. $param;
+            $columns .= $param;
+            $counter++;
+        }
+        $SQL = "INSERT INTO " . $this->modelName() . " ($columns) VALUES ($columnsValues)";
+        if(!empty($query) && !empty($execute)){
+            return false;
+        }
+        $PDO = DB::query($SQL, $execute);
+        if ($PDO) {
+            return true;
+        }
+        return false;
     }
 
     public function modelName(): string

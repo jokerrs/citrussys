@@ -50,13 +50,14 @@
     <div class="container">
         <form method="post" action="/comments">
             <div class="mb-3">
-                <label for="creator" class="form-label">Email address</label>
-                <input type="text" name="creator" id="creator" class="form-control" placeholder="name@example.com">
+                <label for="creator" class="form-label">Name</label>
+                <input type="text" name="creator" id="creator" class="form-control" placeholder="Your name...">
             </div>
             <div class="mb-3">
                 <label for="comment" class="form-label">Comment</label>
                 <textarea class="form-control" name="comment" id="comment" rows="3" placeholder="Comment..."></textarea>
             </div>
+            <input type="hidden" name="product_id" value="<?= $params['id'] ?>">
             <i class="disclaimer">*Comments will be posted after they are verified</i><br/>
             <button type="submit" class="btn btn-primary mb-3">Post comment</button>
         </form>
