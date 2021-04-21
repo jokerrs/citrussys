@@ -49,42 +49,31 @@
 </main>
 <footer>
     <div class="container">
-            <form method="post" action="/comments">
-                <div class="mb-3">
-                    <label for="creator" class="form-label">Email address</label>
-                    <input type="text" name="creator" id="creator" class="form-control" placeholder="name@example.com">
-                </div>
-                <div class="mb-3">
-                    <label for="comment" class="form-label">Comment</label>
-                    <textarea class="form-control" name="creator" id="comment" rows="3" placeholder="Comment..."></textarea>
-                </div>
-                <i class="disclaimer">*Comments will be posted after they are verified</i><br />
-                <button type="submit" class="btn btn-primary mb-3">Post comment</button>
-
-            </form>
+        <form method="post" action="/comments">
+            <div class="mb-3">
+                <label for="creator" class="form-label">Email address</label>
+                <input type="text" name="creator" id="creator" class="form-control" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+                <label for="comment" class="form-label">Comment</label>
+                <textarea class="form-control" name="comment" id="comment" rows="3" placeholder="Comment..."></textarea>
+            </div>
+            <i class="disclaimer">*Comments will be posted after they are verified</i><br/>
+            <button type="submit" class="btn btn-primary mb-3">Post comment</button>
+        </form>
         <hr>
-        <div class="row comment">
-            <div class="head">
-                <small><strong class='user'>Diablo25</strong> 30.10.2017 12:13</small>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non lorem elementum, accumsan magna sed,
-                faucibus mauris. Nulla pellentesque ante nibh, ac hendrerit ante fermentum sed. Nunc in libero dictum,
-                porta nibh pellentesque, ultrices dolor. Curabitur nunc ipsum, blandit vel aliquam id, aliquam vel
-                velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sit
-                amet mi dignissim, pretium justo non, lacinia libero. Nulla facilisi. Donec id sem velit. </p>
-        </div>
-        <div class="row comment">
-            <div class="head">
-                <small><strong class='user'>Giesche</strong> 30.10.2017 12:13</small>
-            </div>
-            <p>Praesent molestie ante nec metus convallis aliquam. Ut aliquam tincidunt mollis. Maecenas et ex sit amet
-                est vehicula ultrices sed sit amet elit. Suspendisse potenti. Aenean et quam ut purus convallis
-                porttitor. Mauris porttitor pretium elementum. Duis blandit elit tincidunt ipsum ultricies, ut faucibus
-                lorem facilisis. Proin ipsum turpis, pharetra in lorem ac, porta ullamcorper velit. Proin gravida odio
-                eget elit ultricies sodales. Vivamus vel tincidunt ligula. Proin pulvinar pellentesque velit eget
-                luctus. Aliquam vitae enim ut purus vestibulum sollicitudin sit amet eget lacus. Nunc tempus fringilla
-                tincidunt. </p>
-        </div>
+        <?php if(!isset($params2['error'])):
+            foreach ($params2 as $param): ?>
+                <div class="row comment">
+                    <div class="head">
+                        <small><strong class='user'><?= $param['creator'] ?></strong> <?= $param['created_at'] ?></small>
+                    </div>
+                    <p><?= $param['comment'] ?> </p>
+                </div>
+            <?php endforeach;
+        else: ?>
+            <p> <?= $params2['error'] ?></p>
+        <?php endif; ?>
         <hr>
     </div>
 </footer>

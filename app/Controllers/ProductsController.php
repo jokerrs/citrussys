@@ -10,7 +10,8 @@ class ProductsController extends Controller
 
     public static function showHomePage(){
         $products = new Products();
-        return self::view('homepage', $products->all());
+        $comments = new Comments();
+        return self::view('homepage', $products->all(), $comments->getProductComments(0));
     }
 
     public static function showProduct($slug)
