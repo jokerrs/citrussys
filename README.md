@@ -30,7 +30,7 @@ Run terminal inside the folder of the project and run the following
 You might need to use `sudo` for the `chmod` 
 
 ```shell
-:# chmod +x ./install.sh
+:$ chmod +x ./install.sh
 :$ ./install.sh
  >>ENTER DATABASE USER NAME:
  >>ENTER DATABASE PASSWORD:
