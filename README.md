@@ -22,6 +22,7 @@ password: admin
 
 ## Installation
 
+
 ### Composer
 Run the command
 ```shell
@@ -54,6 +55,12 @@ After the installation you should need to run the following commands
 cd ..
 sudo chown -R www-data:www-data citrussys/
 sudo chmod -R 755 citrussys/
+```
+
+Append your site link inside the `.env` file after `SITE_LINK`
+
+```shell
+SITE_LINK=https://example.com
 ```
 
 Also, be sure you set up the public folder as the deployment folder
