@@ -8,21 +8,22 @@ use app\Models\Users;
 class ProductsController extends Controller
 {
 
-    public static function showHomePage(){
+    public static function showHomePage(): void
+    {
         $products = new Products();
         $comments = new Comments();
-        return self::view('homepage', $products->all(), $comments->getCommentsByProductID(0));
+        self::view('homepage', $products->all(), $comments->getCommentsByProductID(0));
     }
 
-    public static function showProduct($slug)
+    public static function showProduct($slug): void
     {
         $products = new Products();
         $comments = new Comments();
         $product = $products->where(['slug' => $slug], 1);
         if(isset($product['error'])){
-            return self::view('404');
+            self::view('404');
         }
         $comments = $comments->getCommentsByProductID($product['id']);
-        return self::view('product',$product , $comments);
+        self::view('product',$product , $comments);
     }
 }
