@@ -1,4 +1,5 @@
 #!/bin/bash
+composer install
 read -p "ENTER DATABASE USER NAME: " dbuser
 read -s -p "ENTER DATABASE PASSWORD: " dbpassword
 mysql --user=$dbuser --password=$dbpassword citrussys < citrussys.sql
