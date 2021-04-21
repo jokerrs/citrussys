@@ -1,3 +1,8 @@
+<?php
+if(isset($_SESSION['uid'])){
+    header("Location: /admin");
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>

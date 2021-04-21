@@ -27,6 +27,9 @@ Router::post('/login', [UsersController::class, 'login']);
 
 Router::post('/logout', [UsersController::class, 'logout']);
 Router::get('/logout', [UsersController::class, 'logout']);
-Router::get('/admin', 'admin/comments');
+Router::get('/admin', [UsersController::class, 'admin']);
+Router::get('/admin/comments/approve/([0-9]*)', function ($id){
+    CommentsController::approve($id);
+});
 
 Router::run();

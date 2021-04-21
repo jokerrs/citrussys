@@ -2,6 +2,7 @@
 
 namespace app\Controllers;
 
+use app\Models\Comments;
 use app\Models\Users;
 
 class UsersController extends Controller
@@ -21,5 +22,10 @@ class UsersController extends Controller
     {
         session_destroy();
         header("Location: /");
+    }
+
+    public static function admin(){
+        $comments = new Comments();
+        self::view('admin/comments', $comments->where(['approved' => 0]));
     }
 }

@@ -75,6 +75,29 @@ class Model extends DB implements ModelInterface
         return false;
     }
 
+    public function update(array $params, $id)
+    {
+        $query = '';
+        $counter = 0;
+        foreach ($params as $param => $key){
+            $execute[":$param"] = $key;
+            if($counter > 0){
+                $query .= ', ';
+            }
+            $query .= $param.'=:'.$param;
+            $counter++;
+        }
+        $SQL = "UPDATE ". $this->modelName() ." SET $query WHERE id=:id";
+        $execute[':id'] = $id;
+        if(empty($query) && empty($execute)){
+            return false;
+        }
+        $PDO = DB::query($SQL, $execute);
+        if ($PDO) {
+            return true;
+        }
+        return false;
+    }
     public function modelName(): string
     {
         return strtolower(substr(get_class($this), 11));
