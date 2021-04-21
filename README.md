@@ -37,7 +37,7 @@ $ ./install.sh
 ```
 
 
-After the installation you should need to run the following command
+After the installation you should need to run the following commands
 ```shell
 cd ..
 sudo chown -R www-data:www-data citrussys/
