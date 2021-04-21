@@ -56,3 +56,9 @@ Usually the full path will be
 ```shell
 /var/www/citrussys/public
 ```
+
+p.s.
+You are able to run the project as well via without apache
+```shell
+php -S 127.0.0.1:8001
+```
