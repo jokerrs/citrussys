@@ -11,7 +11,7 @@ class ProductsController extends Controller
     public static function showHomePage(){
         $products = new Products();
         $comments = new Comments();
-        return self::view('homepage', $products->all(), $comments->getProductComments(0));
+        return self::view('homepage', $products->all(), $comments->getCommentsByProductID(0));
     }
 
     public static function showProduct($slug)
@@ -22,7 +22,7 @@ class ProductsController extends Controller
         if(isset($product['error'])){
             return self::view('404');
         }
-        $comments = $comments->getProductComments($product['id']);
+        $comments = $comments->getCommentsByProductID($product['id']);
         return self::view('product',$product , $comments);
     }
 }

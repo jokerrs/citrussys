@@ -5,7 +5,7 @@ namespace app\Models;
 class Comments extends Model
 {
 
-    public function getProductComments($productID): array
+    public function getCommentsByProductID($productID): array
     {
         return $this->where([
             'product_id' => $productID,
