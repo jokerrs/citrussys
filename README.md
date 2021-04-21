@@ -1,5 +1,10 @@
 # citrussys
-
+```
+Disclaimer:
+This project is a test project, DO NOT use it for production purposes.
+The $_GET and $_POST variables are not secured.
+Project is under the MIT license!
+```
 ## Requirements
 
 - PHP 7.4 >
