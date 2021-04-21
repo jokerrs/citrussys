@@ -14,6 +14,12 @@ Project is under the MIT license!
   - rewrite
 - Composer globally installed for the bash installation
 
+```
+/admin - admin page
+username: admin
+password: admin
+```
+
 ## Installation
 
 ### Composer
